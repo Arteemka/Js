@@ -1,26 +1,32 @@
 function main() {
-'use strict';
+        'use strict';
 
-let i = 0,a,b,income = [];
-let money = prompt("Ваш бюджет на месяц?", "0");
-let time = prompt("Введите дату в формате YYYY-MM-DD", "0");
+        let i = 0,a,b,c,d,income = [];
+        let money = prompt("Ваш бюджет на месяц?", "0");
+        let time = prompt("Введите дату в формате YYYY-MM-DD", "0");
 
- while(i<2){
-         a = prompt("Введите обязательную статью расходов в этом месяце", "0");
-         b = prompt("Во сколько обойдется?", "0");
-         i++;
- }
+        a = prompt("Введите обязательную статью расходов в этом месяце", "0");
+        b = prompt("Во сколько обойдется?", "0");
+        c = prompt("Введите обязательную статью расходов в этом месяце", "0");
+        d = prompt("Во сколько обойдется?", "0");
+                
 
-let appData = {
-    money,
-    timeData: time,
-    expenses: a + ':' + b,
-    income: income,
-    optionalExpenses: null,
-    savings: false
-}
+        let appData = {
+        money,
+        timeData: time,
+        expenses: {},
+        income: income,
+        optionalExpenses: null,
+        savings: false
+        };
 
-alert(appData.money/30);
+        appData.expenses[a] = b;
+        appData.expenses[c] = d;
+
+
+        console.log(appData.expenses);
+        alert(appData.money/30);
+
 }
 
 main();
