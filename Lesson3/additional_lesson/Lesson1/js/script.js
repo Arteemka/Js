@@ -8,10 +8,16 @@ function main(){
     Str = Str.replace(/-/g," ");
     console.log(Str);
 
-    Str = Str.slice(Str.lastIndexOf("легким"));
-    Str = Str.replace(/им/, "о");
+     let S = Str.slice(Str.lastIndexOf("легким"));
+    let s = S.replace(/им/, "о");
+    let a = Str.substr(0, 19);
+             let cat = a.concat(s);
+             console.log(cat);
+    
 
-    console.log(Str);
+    
+    
+
 
     let arr = [20,33,1, "Человек",2,3], sum = 0;   
 
