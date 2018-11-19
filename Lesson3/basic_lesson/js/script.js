@@ -1,7 +1,7 @@
 function main() {
         'use strict';
 
-        let money,time,a,b;
+        let money,time;
 
         function start() {
                 money = prompt("Ваш бюджет на месяц?", "0");
@@ -40,13 +40,14 @@ function main() {
         
         chooseOptExpenses ();
 
+        let a,b;
         function chooseExpenses () {
         for(let i = 0; i < 2; i++){
-                 a = prompt("Введите обязательную статью расходов в этом месяце", ""),
-                    b = prompt("Во сколько обойдется?", "");
+                 a = prompt("Введите обязательную статью расходов в этом месяце", "");
+                 b = prompt("Во сколько обойдется?", "");
         
-                if((typeof(a)) === 'string' && a != null && b != null
-                        && a != '' && b != '' && a.length < 50){
+                if((typeof(a)) === 'string' && a != null && 
+                b != null && a != '' && b != '' && a.length < 50){
                         appData.expenses[a] = b;
                         }else {
                         alert('Error!');
@@ -56,7 +57,7 @@ function main() {
         }
         chooseExpenses();
         
-        function detectLevel (){
+        function checkSavings (){
                 if(appData.savings == true){
                         let save = +prompt("Какова сумма накоплений?", ""),
                             percent = +prompt("Под какой процент ?", "");
@@ -66,7 +67,7 @@ function main() {
                 }
         }
 
-        detectLevel();
+        checkSavings();
 
         function detectDayBudget () {
                 appData.moneyPerDay = (appData.money / 30).toFixed();
@@ -75,6 +76,19 @@ function main() {
         }
         detectDayBudget();
 
+        function detectLevel (){
+                if(appData.moneyPerDay < 100){
+                        console.log("Минимальный уровень достатка");
+                }else if(appData.moneyPerDay > 100 && appData.moneyPerDay < 2000){
+                        console.log("Средний уровень достатка");
+                }else if(appData.moneyPerDay > 2000){
+                        console.log("Высокий уровень достатка");
+                }else {
+                        console.log("Произошла ошибка!");
+                }
+        }
+
+        detectLevel();
         console.log(appData);
 }
 
