@@ -40,6 +40,7 @@ function main() {
         
         chooseOptExpenses ();
 
+        function chooseExpenses () {
         for(let i = 0; i < 2; i++){
                  a = prompt("Введите обязательную статью расходов в этом месяце", ""),
                     b = prompt("Во сколько обойдется?", "");
@@ -52,14 +53,8 @@ function main() {
                         i--;
                         }
                 }
-
-                if((typeof(a)) === 'string' && a != null && b != null
-                        && a != '' && b != '' && a.length < 50){
-                        appData.expenses[a] = b;
-                }else {
-                        alert('Error!');
-                        i--;
-                }
+        }
+        chooseExpenses();
         
         function detectLevel (){
                 if(appData.savings == true){
@@ -73,9 +68,8 @@ function main() {
 
         detectLevel();
 
-        appData.moneyPerDay = (appData.money / 30).toFixed();
-
         function detectDayBudget () {
+                appData.moneyPerDay = (appData.money / 30).toFixed();
                alert("Ежедневный буджет : " + appData.moneyPerDay);
                 
         }
