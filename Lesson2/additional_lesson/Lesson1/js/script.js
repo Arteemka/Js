@@ -1,17 +1,29 @@
 function main(){
     'use strict';
 
-    let Week = document.getElementById('Week');
     let week = ["Monday", "Tuesday", 
                 "Wednesday", "Thursday",
-                 "Friday", "Saturday", "Sunday"],
+                 "Friday", "Saturday", "Sunday"], 
+                 date = new Date(),
+                 day = date.getDay(),
                 i = 0;
-   
+
+    let div = document.createElement("div");
+        div.id = "week";
+        document.body.appendChild(div);
+    let Week = document.getElementById("week"); 
+
     while (i < week.length) {
-	     if(i == week.length - 2){
-            var strong = "<i>" +"<strong>"+ week[i] +"</strong>"+"</i>"+ "<br>";
-            Week.insertAdjacentHTML('beforeBegin', strong);
-            i++;
+	     if(i == day - 1){
+             if(i == 5 || i == 6){
+                let strong = "<strong>"+ "<i>" + week[i] +"</i>"+"</strong>"+ "<br>";
+                Week.insertAdjacentHTML('beforeBegin', strong);
+                i++;
+             }else{
+                let strong = "<i>" + week[i] +"</i>"+ "<br>";
+                Week.insertAdjacentHTML('beforeBegin', strong);
+                i++;
+             }
         }else if (i == 5 || i == 6) {
             var strong = "<strong>"+ week[i] +"</strong>"+ "<br>";
             Week.insertAdjacentHTML('beforeBegin', strong);
@@ -23,6 +35,8 @@ function main(){
 		}
     }
 
+   
+   
 }
 
 main();
