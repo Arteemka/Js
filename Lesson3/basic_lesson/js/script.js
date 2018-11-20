@@ -1,7 +1,7 @@
 function main() {
         'use strict';
 
-        let money,time;
+        let money, time;
 
         function start() {
                 money = prompt("Ваш бюджет на месяц?", "0");
@@ -13,6 +13,7 @@ function main() {
         
                 
         }
+
         start();
 
      
@@ -26,7 +27,7 @@ function main() {
         };
 
         function chooseOptExpenses() {
-                for(let i = 1; i <= 3; i++) {
+                for (let i = 1; i <= 3; i++) {
                         let a = prompt("Статья необязательных расходов?", "");
 
                         if ((typeof(a)) === 'string' && a != null && a != '' && a.length < 50) {
@@ -40,20 +41,20 @@ function main() {
         
         chooseOptExpenses ();
 
-        let a,b;
+        let a, b;
         function chooseExpenses() {
         for(let i = 0; i < 2; i++) {
                  a = prompt("Введите обязательную статью расходов в этом месяце", "");
                  b = prompt("Во сколько обойдется?", "");
         
                 if ((typeof(a)) === 'string' && a != null && 
-                b != null && a != '' && b != '' && a.length < 50) {
+                        b != null && a != '' && b != '' && a.length < 50) {
                         appData.expenses[a] = b;
                 } else {
                         alert('Error!');
                         i--;
                 }
-                }
+        }
         }
         chooseExpenses();
         
@@ -71,13 +72,13 @@ function main() {
 
         function detectDayBudget() {
                 appData.moneyPerDay = (appData.money / 30).toFixed();
-               alert("Ежедневный буджет : " + appData.moneyPerDay);
+                alert("Ежедневный буджет : " + appData.moneyPerDay);
                 
         }
         detectDayBudget();
 
         function detectLevel() {
-                if(appData.moneyPerDay < 100) {
+                if (appData.moneyPerDay < 100) {
                         console.log("Минимальный уровень достатка");
                 } else if (appData.moneyPerDay > 100 && appData.moneyPerDay < 2000) {
                         console.log("Средний уровень достатка");

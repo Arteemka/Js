@@ -10,9 +10,9 @@ function main() {
                 while (isNaN(money) || money === "" || money === null) {
                          money = prompt("Ваш бюджет на месяц?", "0");
                 }
-        
                 
         }
+
         start();
 
      
@@ -24,7 +24,7 @@ function main() {
         optionalExpenses: {},
         savings: true,
         chooseExpenses: function() {
-                for(let i = 0; i < 2; i++) {
+                for (let i = 0; i < 2; i++) {
                         a = prompt("Введите обязательную статью расходов в этом месяце", "");
                         b = prompt("Во сколько обойдется?", "");
                
@@ -66,7 +66,7 @@ function main() {
         },
         
         chooseOptExpenses:function() {
-                for(let i = 1; i <= 3; i++) {
+                for (let i = 1; i <= 3; i++) {
                         let a = prompt("Статья необязательных расходов?", "");
 
                         if ((typeof(a)) === 'string' && a != null && a != '' && a.length < 50) {
@@ -80,7 +80,7 @@ function main() {
 
         chooseInCome:function() {
                 do {
-		        items = prompt('Что принесет дополнительный доход? (Перечислите через запятую)', '');
+		items = prompt('Что принесет дополнительный доход? (Перечислите через запятую)', '');
 		} while ((typeof(items)) !== 'string' || items === null || items === '');
 
                 appData.income = items.split(", ");
@@ -94,7 +94,7 @@ function main() {
         }
 };            
 
-        for(let key in appData) {
+        for (let key in appData) {
                 console.log('Наша программа включает в себя данные:'+ key);
         }
 }

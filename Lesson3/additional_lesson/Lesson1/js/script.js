@@ -17,7 +17,7 @@ function main(){
 
     let arr = [20,33,1, "Человек",2,3], sum = 0;   
 
-    for(let i = 0; i < arr.length;i++) {
+    for (let i = 0; i < arr.length;i++) {
         if (typeof(arr[i]) === "number") {
             sum += arr[i]; 
         }
@@ -28,7 +28,7 @@ function main(){
     console.log(Math.pow(sum,3)); 
     console.log(Math.sqrt(sum));
 
-    function add (text) {
+    function add(text) {
         if ((typeof(text)) === 'string' ) {
                 text = text.trim();
             if (text.length > 50) {
