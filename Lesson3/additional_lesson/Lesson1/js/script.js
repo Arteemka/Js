@@ -7,16 +7,12 @@ function main(){
    //2  
     Str = Str.replace(/-/g," ");
     console.log(Str);
-
-     let S = Str.slice(Str.lastIndexOf("легким"));
-    let s = S.replace(/им/, "о");
-    let a = Str.substr(0, 19);
-             let cat = a.concat(s);
-             console.log(cat);
-    
-
-    
-    
+//3
+   let  s = Str.slice(Str.lastIndexOf("легким"));
+   let a  = s.replace(/им/, "о");
+    Str = Str.substr(0, 19);
+             Str = Str.concat(a);
+             console.log(Str);   
 
 
     let arr = [20,33,1, "Человек",2,3], sum = 0;   
