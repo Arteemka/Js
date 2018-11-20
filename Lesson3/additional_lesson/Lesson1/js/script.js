@@ -17,34 +17,34 @@ function main(){
 
     let arr = [20,33,1, "Человек",2,3], sum = 0;   
 
-    for(let i = 0; i < arr.length;i++){
-        if(typeof(arr[i]) === "number"){
+    for(let i = 0; i < arr.length;i++) {
+        if (typeof(arr[i]) === "number") {
             sum += arr[i]; 
-               
         }
         
     }
      
      
-        console.log(Math.pow(sum,3)); 
+    console.log(Math.pow(sum,3)); 
     console.log(Math.sqrt(sum));
 
-    function add (text){
-        if((typeof(text)) === 'string' ){
-            text = text.trim();
-            if(text.length > 50){
-             let str = text.substr(0, 50);
-             let point = "...";
-             let cat = str.concat(point);
-             console.log(cat);
-            }else{
+    function add (text) {
+        if ((typeof(text)) === 'string' ) {
+                text = text.trim();
+            if (text.length > 50) {
+                let str = text.substr(0, 50);
+                let point = "...";
+                let cat = str.concat(point);
+                console.log(cat);
+            } else {
                 console.log(text);
             }
-            
-        }else {
-        	alert("Вы велли не строку");
+
+        } else {
+        	    alert("Вы велли не строку");
         }
     }
+    
     let text = prompt("Введите слово","");
     add(text);
 }

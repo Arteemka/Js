@@ -13,47 +13,47 @@ function main() {
         savings: false
         };
 
-        for(let i = 0; i < 2; i++){
+        for(let i = 0; i < 2; i++) {
                 let a = prompt("Введите обязательную статью расходов в этом месяце", ""),
                     b = prompt("Во сколько обойдется?", "");
 
-                if((typeof(a)) === 'string' && a != null && b != null
-                        && a != '' && b != '' && a.length < 50){
+                if ((typeof(a)) === 'string' && a != null && b != null
+                        && a != '' && b != '' && a.length < 50) {
                         appData.expenses[a] = b;
-                }else {
+                } else {
                         alert('Error!');
                         i--;
                 }
         }
 
         // let i = 0;
-        // while(i < 2){
+        // while(i < 2) {
         //         let a = prompt("Введите обязательную статью расходов в этом месяце", ""),
         //             b = prompt("Во сколько обойдется?", "");
 
-        //         if((typeof(a)) === 'string' && a != null && b != null
-        //                 && a != '' && b != '' && a.length < 50){
+        //         if ((typeof(a)) === 'string' && a != null && b != null
+        //                 && a != '' && b != '' && a.length < 50) {
         //                 appData.expenses[a] = b;
         //                 i++;
-        //         }else {
+        //         } else {
         //                 alert('Error!');                                  
         //         }
         // }
 
         // let i = 0;
-        // do{
+        // do {
         //         let a = prompt("Введите обязательную статью расходов в этом месяце", ""),
         //             b = prompt("Во сколько обойдется?", "");
 
-        //         if((typeof(a)) === 'string' && a != null && b != null 
-        //                 && a != '' && b != '' && a.length < 50){
+        //         if ((typeof(a)) === 'string' && a != null && b != null 
+        //                 && a != '' && b != '' && a.length < 50) {
         //                 appData.expenses[a] = b;
         //                 i++;
-        //         }else {
+        //         } else {
         //                 alert('Error!'); 
                                                        
         //         }
-        // }while(i < 2);
+        // } while(i < 2);
 
         alert(appData.money/30);
 
