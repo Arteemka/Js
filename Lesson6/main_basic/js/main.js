@@ -104,6 +104,7 @@ function main() {
 
     optionalExpensesBtn.addEventListener('click', function () {
         let check =false;
+
         expensesItem.forEach(function(item){
             if( item.value != '' && item.value != null) {
                  check  = true; 
@@ -114,17 +115,21 @@ function main() {
                 }
         });
             console.log(check);
-            if(check){
-           
-        for (let i = 0; i < optionalExpensesItem.length; i++) {
-            
-            let opt = optionalExpensesItem[i].value;       
-                appData.optionalExpenses[i] = opt;
-                optionalexpensesValue.textContent += appData.optionalExpenses[i] + " ";
-    }
-            }
-    });
 
+            if(check){
+             let string = '';
+        for (let i = 0; i < 3; i++) {
+            
+            let opt = optionalExpensesItem[i].value;        
+                    appData.optionalExpenses[i] = opt;
+                    string += opt + ' '; 
+            }
+            optionalexpensesValue.textContent = string ;
+        }
+            
+            
+    });
+   
     countBudgetBtn.addEventListener('click', function () {
         
         let check =false;
