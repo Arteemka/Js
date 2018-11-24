@@ -28,6 +28,9 @@ function main() {
         expensesBtn.disabled = true;
         optionalExpensesBtn.disabled = true;
         countBudgetBtn.disabled = true;
+        expensesBtn.style.backgroundImage = "linear-gradient(336deg,#ccc,#ccc)";
+        optionalExpensesBtn.style.backgroundImage = "linear-gradient(336deg,#ccc,#ccc)";
+        countBudgetBtn.style.backgroundImage = "linear-gradient(336deg,#ccc,#ccc)";
 
     let money, time, sum = 0;
 
@@ -51,6 +54,10 @@ function main() {
         expensesBtn.disabled = false;
         optionalExpensesBtn.disabled = false;
         countBudgetBtn.disabled = false;
+
+        expensesBtn.style.backgroundImage = "linear-gradient(336deg,#ffbd75,#ff964b)";
+        optionalExpensesBtn.style.backgroundImage = "linear-gradient(336deg,#ffbd75,#ff964b)";
+        countBudgetBtn.style.backgroundImage = "linear-gradient(336deg,#ffbd75,#ff964b)";
     
     });
 
@@ -109,7 +116,7 @@ function main() {
             console.log(check);
             if(check){
            
-        for (let i = 0; i <= optionalExpensesItem.length; i++) {
+        for (let i = 0; i < optionalExpensesItem.length; i++) {
             
             let opt = optionalExpensesItem[i].value;       
                 appData.optionalExpenses[i] = opt;
@@ -163,12 +170,26 @@ function main() {
           incomeValue.textContent = appData.income;
     });
 
+    chooseSum.style.backgroundColor = "#ccc";   
+        choosePercent.style.backgroundColor = "#ccc"; 
+        chooseSum.setAttribute("readonly", true);
+        choosePercent.setAttribute("readonly", true);
+
     checkSavings.addEventListener('input', function () {
+        checkSavings = false;
 
          if (appData.savings == true) {
             appData.savings = false;
+            chooseSum.style.backgroundColor = "#ccc";   
+        choosePercent.style.backgroundColor = "#ccc"; 
+        chooseSum.setAttribute("readonly", true);
+        choosePercent.setAttribute("readonly", true);
         } else {
             appData.savings = true;
+            chooseSum.style.backgroundColor = "#fff";   
+            choosePercent.style.backgroundColor = "#fff"; 
+            chooseSum.removeAttribute("readonly");
+            choosePercent.removeAttribute("readonly");
         }
     });
 
