@@ -57,7 +57,10 @@ function main() {
     document.body.appendChild(input2);
     let Input2 = document.getElementById("input2");
 
-
+    let input3 = document.createElement('input');
+    input3.id = "input3";
+    document.body.appendChild(input3);
+    
 
     let button = document.createElement('button');
     button.id = "button";
@@ -75,7 +78,8 @@ function main() {
             let first = Date.UTC(firstarray[3], firstarray[2] - 1, firstarray[1]);
             let second = Date.UTC(secondarray[3], secondarray[2] - 1, secondarray[1]);
             let days = Math.ceil((second - first) / (1000 * 60 * 60 * 24));
-            alert(days);
+            document.getElementById('input3').value = days;
+            
         }
     });
 }
