@@ -111,24 +111,23 @@ function main() {
                 item.style.border = "1px solid red";
             }
         });
-
-        function isRegex(reg) {
-            var pattern = /^[а-яА-ЯЁё\s]+$/;
-            return pattern.test(reg);
-        }
         
+       
 
         if (check) {
             let string = '';
-
+            
             for (let i = 0; i < optionalExpensesItem.length; i++) {
+               
                 let opt = optionalExpensesItem[i].value;
-                if (isRegex(optionalExpensesItem[i].value)) {
+                optionalExpensesItem[i].addEventListener('keyup',function(e){
+
+                    return e.replace(/[^а-яё]/ig,'');
+            });
+
+               
                     appData.optionalExpenses[i] = opt;
                     string += opt + ' ';
-                } else {
-                    return alert('Неправельно введена строка. Введите только русскую кириллицу!');
-                }
             }
             optionalexpensesValue.textContent = string;
 
