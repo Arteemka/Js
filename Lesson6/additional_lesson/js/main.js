@@ -63,6 +63,24 @@ function main() {
 
     });
 
+
+
+    // for (let i = 0; i <= expensesItem.length; i++) {
+    //     if (i % 2 != 0) {
+    //         expensesItem[i].addEventListener('keyup', function () {
+    //             expensesItem[i].value =expensesItem[i].value.replace(/[^0-9]/ig, '');
+    //         });
+    //       }
+    //     }
+
+    expensesItem.forEach(function (elem, i, mas) {
+        if (i % 2 != 0) {
+            mas[i].addEventListener('keyup', function () {
+                mas[i].value = mas[i].value.replace(/[^0-9]/ig, '');
+            });
+        }
+    });
+    
     expensesBtn.addEventListener('click', function () {
 
         let check = false;
@@ -79,10 +97,11 @@ function main() {
 
         if (check) {
             for (let i = 0; i < expensesItem.length; i++) {
+
                 let a = expensesItem[i].value,
                     b = expensesItem[++i].value;
 
-                if (!isNaN(b) && (typeof (a)) === 'string' && a != null &&
+                if ((typeof (a)) === 'string' && a != null &&
                     b != null && a != '' && b != '' && a.length < 50) {
                     appData.expenses[a] = b;
                     sum += +b;
@@ -101,6 +120,7 @@ function main() {
     //     });
     // }
     //А лучше так
+
 
     optionalExpensesItem.forEach(function (elem, i, mas) {
         mas[i].addEventListener('keyup', function () {
