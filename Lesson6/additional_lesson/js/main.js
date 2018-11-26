@@ -34,7 +34,7 @@ function main() {
 
     let money, time, sum = 0;
 
-    
+
 
 
     startButton.addEventListener('click', function () {
@@ -82,12 +82,12 @@ function main() {
                 let a = expensesItem[i].value,
                     b = expensesItem[++i].value;
 
-                if ( !isNaN(b) && (typeof (a)) === 'string' && a != null &&
+                if (!isNaN(b) && (typeof (a)) === 'string' && a != null &&
                     b != null && a != '' && b != '' && a.length < 50) {
                     appData.expenses[a] = b;
                     sum += +b;
                 } else {
-               
+
                     return alert('Неправельно введена цена. Введите число!');
                 }
             }
@@ -95,12 +95,23 @@ function main() {
         }
     });
 
+    // for (let i = 0; i < optionalExpensesItem.length; i++) {
+    //     optionalExpensesItem[i].addEventListener('keyup', function () {
+    //         optionalExpensesItem[i].value = optionalExpensesItem[i].value.replace(/[^а-яё]/ig, '');
+    //     });
+    // }
+    //А лучше так
 
+    optionalExpensesItem.forEach(function (elem, i, mas) {
+        mas[i].addEventListener('keyup', function () {
+            mas[i].value = mas[i].value.replace(/[^а-яА-ЯёЁ]/ig, '');
+        });
+    });
 
     optionalExpensesBtn.addEventListener('click', function () {
 
         let check = false;
-        
+
         expensesItem.forEach(function (item) {
 
             if (item.value != '' && item.value != null) {
@@ -111,28 +122,18 @@ function main() {
                 item.style.border = "1px solid red";
             }
         });
-        
-       
-
         if (check) {
             let string = '';
-            
+
             for (let i = 0; i < optionalExpensesItem.length; i++) {
-               
+
                 let opt = optionalExpensesItem[i].value;
-                optionalExpensesItem[i].addEventListener('keyup',function(e){
-
-                    return e.replace(/[^а-яё]/ig,'');
-            });
-
-               
-                    appData.optionalExpenses[i] = opt;
-                    string += opt + ' ';
+                appData.optionalExpenses[i] = opt;
+                string += opt + ' ';
             }
             optionalexpensesValue.textContent = string;
-
-
         }
+
     });
 
     countBudgetBtn.addEventListener('click', function () {
@@ -245,6 +246,6 @@ function main() {
         console.log('Наша программа включает в себя данные:' + key);
     }
 
-  
+
 }
 main();
