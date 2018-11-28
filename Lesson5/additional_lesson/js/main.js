@@ -12,7 +12,7 @@ function main() {
     Day = Data.getDate();
     Month = Data.getMonth() + 1;
     Year = Data.getFullYear();
-    Hours = Data.getHours() + 1;
+    Hours = Data.getHours();
     Minutes = Data.getMinutes();
     Seconds = Data.getSeconds();
 

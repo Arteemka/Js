@@ -35,21 +35,23 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
     //таймер
-    let deadline = '2018-11-31';
+    let deadline = '2018-11-29';
 
-    function getTimeRemaining(endtime) {
+    function getTimeRemaining(endtime) {        
         let t = Date.parse(endtime) - Date.parse(new Date()),
-            hours,
+            hours  ,
             minutes,
-            seconds;
+            seconds ;
+
 
         if (t <= 0) {
             hours = minutes = seconds = 0;
         } else {
             seconds = Math.floor((t/1000) % 60);
-            minutes = Math.floor((t/1000/60) % 60);
-            hours = Math.floor((t/(1000*60*60)));
+            minutes = Math.floor((t/1000/60) % 60)  ;
+            hours = Math.floor((t/(1000*60*60))) + new Date().getTimezoneOffset() /60 ;
         }
+        
 
         return{
             'total':t,
@@ -74,9 +76,9 @@ window.addEventListener('DOMContentLoaded', function () {
                 seconds.textContent = t.seconds;
 
                 if (t.hours < 10) {
-                    hours.textContent = "0" + t.hours;
+                    hours.textContent = "0" + t.hours  ;
                  }  else {
-                       hours.textContent = t.hours;
+                       hours.textContent = t.hours ;
                     }
                  if (t.minutes < 10) {
                     minutes.textContent = "0" + t.minutes;
@@ -95,8 +97,6 @@ window.addEventListener('DOMContentLoaded', function () {
             }
             updateClock();
         }
-        setClock('timer', deadline);
-
-
-    
+        setClock('timer', deadline);    
 });
+
