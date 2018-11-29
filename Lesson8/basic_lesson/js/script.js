@@ -49,7 +49,7 @@ window.addEventListener('DOMContentLoaded', function () {
         } else {
             seconds = Math.floor((t/1000) % 60);
             minutes = Math.floor((t/1000/60) % 60)  ;
-            hours = Math.floor((t/(1000*60*60))) + new Date().getTimezoneOffset() /60 ;
+            hours = Math.floor((t/(1000*60*60))) + new Date().getTimezoneOffset() /60;
         }
         
 
