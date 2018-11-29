@@ -103,29 +103,34 @@ window.addEventListener('DOMContentLoaded', function () {
         overlay = document.querySelector('.overlay'),
         closes = document.querySelector('.popup-close');
 
+    let obj = {
+        modalShow: function () {
+            overlay.style.display = 'block';
+            this.classList.add('.more-splash');
+            document.body.style.overflow = 'hidden';
+        }
+    };
+
     more.addEventListener('click', function () {
-        overlay.style.display = 'block';
-        this.classList.add('.more-splash');
-        document.body.style.overflow = 'hidden';
+        obj.modalShow();
     });
 
     closes.addEventListener('click', function () {
+
         overlay.style.display = 'none';
         more.classList.remove('.more-splash');
         document.body.style.overflow = '';
     });
 
-    function showModal() {
+    
         let modal = document.getElementsByClassName("info")[0];
 
         modal.addEventListener("click", function (e) {
             let target = e.target;
             if (target.matches(".description-btn")) {
-                target.classList.add("more-splash");
-                overlay.style.display = "block";
-                document.body.style.overflow = "hidden";
+                obj.modalShow();
             }
         });
-    }
-    showModal();
+    
+
 });
