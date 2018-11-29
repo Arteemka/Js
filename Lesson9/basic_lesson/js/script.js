@@ -115,15 +115,17 @@ window.addEventListener('DOMContentLoaded', function () {
         document.body.style.overflow = '';
     });
 
-    let modal = document.getElementsByClassName("info")[0];
+    function showModal() {
+        let modal = document.getElementsByClassName("info")[0];
 
-    modal.addEventListener("click", function (e) {
-        let target = e.target;
-        if (target.matches(".description-btn")) {
-            target.classList.add("more-splash");
-            overlay.style.display = "block";
-            document.body.style.overflow = "hidden";
-        }
-    });
-
+        modal.addEventListener("click", function (e) {
+            let target = e.target;
+            if (target.matches(".description-btn")) {
+                target.classList.add("more-splash");
+                overlay.style.display = "block";
+                document.body.style.overflow = "hidden";
+            }
+        });
+    }
+    showModal();
 });
