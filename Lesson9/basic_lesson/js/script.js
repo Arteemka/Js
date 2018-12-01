@@ -99,6 +99,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
     setClock('timer', deadline);
 
+
     let more = document.querySelector('.more'),
         overlay = document.querySelector('.overlay'),
         closes = document.querySelector('.popup-close');
@@ -132,5 +133,13 @@ window.addEventListener('DOMContentLoaded', function () {
             }
         });
     
-
+        more.addEventListener('click', function () {
+            function m() {
+                document.getElementsByClassName('.overlay').style.display = 'block';
+                document.getElementsByClassName('popup-close').style.display = 'none';
+            }
+            m();
+        });
+        
+      
 });

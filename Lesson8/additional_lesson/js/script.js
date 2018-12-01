@@ -101,7 +101,7 @@ window.addEventListener('DOMContentLoaded', function () {
     function isScroll(options) {
         let start = performance.now();
         requestAnimationFrame(function isScroll(time) {
-            let timeF = (time - start) / options.duration;
+            let timeF = (time - start) / options.duration ;
             if (timeF > 1) {
                 timeF = 1;
             }
@@ -130,7 +130,7 @@ window.addEventListener('DOMContentLoaded', function () {
         let li = e.target.closest("li");
         e.preventDefault();
         if (li) {
-            let myTime = 1000;
+            let myTime = 10000;
             let elem = document.querySelector(e.target.getAttribute("href"));
             isScroll({
                 duration: myTime,
@@ -138,8 +138,10 @@ window.addEventListener('DOMContentLoaded', function () {
                 draw: function (progress) {
                     window.scrollBy(0, (progress *
                         (elem.getBoundingClientRect().top - menu.offsetHeight)));
-                }
+                
+                    }
             });
         }
     });
+    
 });
