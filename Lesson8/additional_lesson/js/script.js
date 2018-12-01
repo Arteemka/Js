@@ -96,48 +96,51 @@ window.addEventListener('DOMContentLoaded', function () {
             updateClock();
         }
         setClock('timer', deadline);  
-        
-        function animate(options) {
+    
+        //scroll
+        function isScroll(options) {
             let start = performance.now();
-            requestAnimationFrame(function animate(time) {
-                let timeFraction = (time - start) / options.duration
-                if (timeFraction > 1) {
-                    timeFraction = 1;
+            requestAnimationFrame(function isScroll(time) {
+                let timeF = (time - start) / options.duration;
+                if (timeF > 1) {
+                    timeF = 1;
                 } 
-                let progress = options.timing(timeFraction);
+                let progress = options.timing(timeF);
                 options.draw(progress);
-                if (timeFraction < 1) {
-                    requestAnimationFrame(animate);
+                if (timeF < 1) {
+                    requestAnimationFrame(isScroll);
                 }   
             });
         }
     
-        function circ(timeFraction) {
-            return 1 - Math.sin(Math.acos(timeFraction))
+        function circ(timeF) {
+            return 1 - Math.sin(Math.acos(timeF));
         }
     
-        function makeEaseOut(timing) {
-            return function(timeFraction) {
-                return 1 - timing(1 - timeFraction)
-            }
+        function isOut(timing) {
+            return function(timeF) {
+                return 1 - timing(1 - timeF);
+            };
         }
     
-        let  circEaseOut = makeEaseOut(circ),
-             menu = document.querySelector("nav ul") 
+        let  circOut = isOut(circ),
+             menu = document.querySelector("nav ul");
                  
         menu.addEventListener("click", function(e) {
-            let li = e.target.closest("li")
-            e.preventDefault()
+            let li = e.target.closest("li");
+            e.preventDefault();
                 if (li) {
-                    let myTime = 1000
-                    let elem = document.querySelector(e.target.getAttribute("href"))
-                    animate({ 
+                    let myTime = 1000;
+                    let elem = document.querySelector(e.target.getAttribute("href"));
+                    isScroll({ 
                         duration: myTime,
-                        timing: circEaseOut,
+                        timing: circOut,
                         draw: function(progress) {
                             window.scrollBy(0, (progress * 
-                            (elem.getBoundingClientRect().top - menu.offsetHeight)))
+                            (elem.getBoundingClientRect().top - menu.offsetHeight)));
                         }
-                    })
+                    });
                 }
+            });
+        
 });
