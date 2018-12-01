@@ -95,6 +95,49 @@ window.addEventListener('DOMContentLoaded', function () {
             }
             updateClock();
         }
-        setClock('timer', deadline);    
+        setClock('timer', deadline);  
+        
+        function animate(options) {
+            let start = performance.now();
+            requestAnimationFrame(function animate(time) {
+                let timeFraction = (time - start) / options.duration
+                if (timeFraction > 1) {
+                    timeFraction = 1;
+                } 
+                let progress = options.timing(timeFraction);
+                options.draw(progress);
+                if (timeFraction < 1) {
+                    requestAnimationFrame(animate);
+                }   
+            });
+        }
+    
+        function circ(timeFraction) {
+            return 1 - Math.sin(Math.acos(timeFraction))
+        }
+    
+        function makeEaseOut(timing) {
+            return function(timeFraction) {
+                return 1 - timing(1 - timeFraction)
+            }
+        }
+    
+        let  circEaseOut = makeEaseOut(circ),
+             menu = document.querySelector("nav ul") 
+                 
+        menu.addEventListener("click", function(e) {
+            let li = e.target.closest("li")
+            e.preventDefault()
+                if (li) {
+                    let myTime = 1000
+                    let elem = document.querySelector(e.target.getAttribute("href"))
+                    animate({ 
+                        duration: myTime,
+                        timing: circEaseOut,
+                        draw: function(progress) {
+                            window.scrollBy(0, (progress * 
+                            (elem.getBoundingClientRect().top - menu.offsetHeight)))
+                        }
+                    })
+                }
 });
-

@@ -11,7 +11,8 @@ window.addEventListener('DOMContentLoaded', () => {
             tabContent[i].classList.remove('show');
             tabContent[i].classList.add('hide');
         }
-    }
+    };
+
     hideTabContent(1);
 
     let showTabContent = (b) => {
@@ -19,7 +20,7 @@ window.addEventListener('DOMContentLoaded', () => {
             tabContent[b].classList.remove('hide');
             tabContent[b].classList.add('show');
         }
-    }
+    };
 
     info.addEventListener('click', (event) => {
         let target = event.target;
@@ -50,7 +51,8 @@ window.addEventListener('DOMContentLoaded', () => {
         } else {
             seconds = Math.floor((t / 1000) % 60);
             minutes = Math.floor((t / 1000 / 60) % 60);
-            hours = Math.floor((t / (1000 * 60 * 60))) + new Date().getTimezoneOffset() / 60;
+            hours = Math.floor((t / (1000 * 60 * 60))) + 
+            new Date().getTimezoneOffset() / 60;
         }
 
 
@@ -61,7 +63,7 @@ window.addEventListener('DOMContentLoaded', () => {
             'seconds': seconds
 
         };
-    }
+    };
 
     let  setClock = (id, endtime) => {
         let timer = document.getElementById(id),
@@ -97,7 +99,7 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         }
         updateClock();
-    }
+    };
     setClock('timer', deadline);
 
     let more = document.querySelector('.more'),
