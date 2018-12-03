@@ -133,13 +133,14 @@ window.addEventListener('DOMContentLoaded', function () {
             }
         });
     
-        more.addEventListener('click', function () {
-            function m() {
-                document.getElementsByClassName('.overlay').style.display = 'block';
-                document.getElementsByClassName('popup-close').style.display = 'none';
-            }
-            m();
-        });
-        
-      
+       let o = document.querySelector('.overlay'),
+        c = document.querySelector('.popup-close')[0],
+        b = document.querySelector('.more');
+
+        b.onclick = function() {
+            o.style.display = 'block';
+        };
+        c.onclick = function() {
+            o.style.display = 'none';
+        };
 });
