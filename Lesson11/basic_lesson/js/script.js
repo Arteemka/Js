@@ -111,7 +111,7 @@ window.addEventListener('DOMContentLoaded', () => {
             overlay.style.display = 'block';
             overlay.classList.add('.more-splash');
             document.body.style.overflow = 'hidden';
-    }  
+    };  
 
     more.addEventListener('click', function() {
         modalS();
@@ -141,21 +141,42 @@ window.addEventListener('DOMContentLoaded', () => {
         failure: 'Что-то пошло не так...'
     };
 
+    
+
     let form = document.querySelector('.main-form'),
         input = form.getElementsByTagName('input'),
-        statusMessage = document.createElement('div');
-
+        validPhone = document.querySelectorAll('.popup-form__input'),
+        statusMessage = document.createElement('div'),
+        contactform = document.getElementById("form");
         statusMessage.classList.add('status');
         
-        form.addEventListener('submit', function(event) {
+    
+        // for (let i = 0; i <= validPhone.length; i++) {
+          
+        //         validPhone[i].addEventListener('keyup', function () {
+        //             validPhone[i].value =validPhone[i].value.replace(/[^\+0-9]/ig, '');
+        //         });
+              
+        //     }
+        validPhone.forEach(function (elem, i, mas) {
+           
+                mas[i].addEventListener('keyup', function () {
+                    mas[i].value = mas[i].value.replace(/[^\+0-9]/ig, '');
+                });
+        
+        });
+        
+        
+      let inputForm = function(e){
+        e.addEventListener('submit', function(event) {
             event.preventDefault();
-            form.appendChild(statusMessage);
+            e.appendChild(statusMessage);
 
             let request = new XMLHttpRequest();
             request.open('POST', 'server.php');
             request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
-            let formData = new FormData(form);
+            let formData = new FormData(e);
 
             let obj = {};
 
@@ -181,5 +202,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 input[i].value = '';
             }    
         });
-
+    };
+    inputForm(form);
+    inputForm(contactform);
 });
