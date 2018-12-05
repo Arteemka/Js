@@ -197,7 +197,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 .then(() => statusMessage.innerHTML = message.loading)
                 .then(() => statusMessage.innerHTML = message.success) 
                 .catch(() => statusMessage.innerHTML = message.failure)
-                .then(clearInput)
+                .then(clearInput);
         });
     };
     inputForm(form);
