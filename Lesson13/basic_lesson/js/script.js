@@ -197,7 +197,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 .then(() => statusMessage.innerHTML = message.loading)
                 .then(() => statusMessage.innerHTML = message.success)
                 .catch(() => statusMessage.innerHTML = message.failure)
-                .then(clearInput)
+                .then(clearInput);
         });
     };
     inputForm(form);
@@ -262,7 +262,7 @@ window.addEventListener('DOMContentLoaded', () => {
         base = place.options[place.selectedIndex].value;
 
     valueInput.forEach(function (elem, i, mas) {
-        mas[i].addEventListener('keyup', function () {
+        mas[i].addEventListener('input', function () {
             mas[i].value = mas[i].value.replace(/^[^0-9]$/ig, '');
         });
     });
