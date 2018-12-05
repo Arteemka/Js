@@ -6,7 +6,7 @@ window.addEventListener('DOMContentLoaded', () => {
         info = document.querySelector('.info-header'),
         tabContent = document.querySelectorAll('.info-tabcontent');
 
-     let hideTabContent = (a) => {
+    let hideTabContent = (a) => {
         for (let i = a; i < tabContent.length; i++) {
             tabContent[i].classList.remove('show');
             tabContent[i].classList.add('hide');
@@ -51,8 +51,8 @@ window.addEventListener('DOMContentLoaded', () => {
         } else {
             seconds = Math.floor((t / 1000) % 60);
             minutes = Math.floor((t / 1000 / 60) % 60);
-            hours = Math.floor((t / (1000 * 60 * 60))) + 
-            new Date().getTimezoneOffset() / 60;
+            hours = Math.floor((t / (1000 * 60 * 60))) +
+                new Date().getTimezoneOffset() / 60;
         }
 
 
@@ -65,7 +65,7 @@ window.addEventListener('DOMContentLoaded', () => {
         };
     };
 
-    let  setClock = (id, endtime) => {
+    let setClock = (id, endtime) => {
         let timer = document.getElementById(id),
             hours = timer.querySelector('.hours'),
             minutes = timer.querySelector('.minutes'),
@@ -107,32 +107,32 @@ window.addEventListener('DOMContentLoaded', () => {
         closes = document.querySelector('.popup-close');
 
 
-    let modalS = function() {
-            overlay.style.display = 'block';
-            overlay.classList.add('.more-splash');
-            document.body.style.overflow = 'hidden';
-    };  
+    let modalS = function () {
+        overlay.style.display = 'block';
+        overlay.classList.add('.more-splash');
+        document.body.style.overflow = 'hidden';
+    };
 
-    more.addEventListener('click', function() {
+    more.addEventListener('click', function () {
         modalS();
     });
 
-    closes.addEventListener('click', function()  {
+    closes.addEventListener('click', function () {
 
         overlay.style.display = 'none';
         more.classList.remove('.more-splash');
         document.body.style.overflow = '';
     });
 
-    
-        let modal = document.getElementsByClassName("info")[0];
 
-        modal.addEventListener("click", (e) => {
-            let target = e.target;
-            if (target.matches(".description-btn")) {
-                modalS();
-            }
-        });
+    let modal = document.getElementsByClassName("info")[0];
+
+    modal.addEventListener("click", (e) => {
+        let target = e.target;
+        if (target.matches(".description-btn")) {
+            modalS();
+        }
+    });
 
     //form       
     let message = {
@@ -141,54 +141,48 @@ window.addEventListener('DOMContentLoaded', () => {
         failure: 'Что-то пошло не так...'
     };
 
-    
+
 
     let form = document.querySelector('.main-form'),
         input = form.getElementsByTagName('input'),
         validPhone = document.querySelectorAll('.popup-form__input'),
+        inValid = document.getElementsByTagName('input'),
         statusMessage = document.createElement('div'),
         contactform = document.getElementById("form");
-        statusMessage.classList.add('status');
-        
-    
-        // for (let i = 0; i <= validPhone.length; i++) {
-          
-        //         validPhone[i].addEventListener('keyup', function () {
-        //             validPhone[i].value =validPhone[i].value.replace(/[^\+0-9]/ig, '');
-        //         });
-              
-        //     }
-        validPhone.forEach(function (elem, i, mas) {
-           
-                mas[i].addEventListener('keyup', function () {
-                    mas[i].value = mas[i].value.replace(/[^\+0-9]/ig, '');
-                });
-        
-        });
-        
-        
-      let inputForm = function(e){
-        e.addEventListener('submit', function(event) {
+
+
+    statusMessage.classList.add('status');
+    let valid = true;
+    for (let i = 0; i < inValid.length; i++) {
+        if (inValid[i].type == 'tel' && valid == true) {
+            inValid[i].addEventListener('keyup', function () {
+                inValid[i].value = inValid[i].value.replace(/[^\+0-9\(\) ]/ig, '');
+            });
+        }
+    }
+
+    let inputForm = function (e) {
+        e.addEventListener('submit', function (event) {
             event.preventDefault();
+
             e.appendChild(statusMessage);
+
 
             let request = new XMLHttpRequest();
             request.open('POST', 'server.php');
             request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
             let formData = new FormData(e);
-
-            let obj = {};
-
-            formData.forEach(function(value, key){
+            let obj = {}; // создаем объект для формата JSON
+            formData.forEach(function (value, key) {
                 obj[key] = value;
             });
 
             let json = JSON.stringify(obj);
             request.send(json);
-            
 
-            request.addEventListener('readystatechange', function() {
+
+            request.addEventListener('readystatechange', function () {
                 if (request.readyState < 4) {
                     statusMessage.innerHTML = message.loading;
                 } else if (request.readyState === 4 && request.status == 200) {
@@ -200,7 +194,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
             for (let i = 0; i < input.length; i++) {
                 input[i].value = '';
-            }    
+            }
         });
     };
     inputForm(form);
