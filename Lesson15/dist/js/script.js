@@ -406,6 +406,9 @@ function form() {
       function clearInput() {
         for (var i = 0; i < input.length; i++) {
           input[i].value = '';
+          setTimeout(() => {
+            statusMessage.innerHTML = '';
+          },2000);
         }
       }
 
@@ -596,7 +599,7 @@ module.exports = tabs;
 
 
 function timer() {
-  var deadline = '2018-11-29';
+  var deadline = '2018-12-10';
 
   var getTimeRemaining = function getTimeRemaining(endtime) {
     var t = Date.parse(endtime) - Date.parse(new Date()),

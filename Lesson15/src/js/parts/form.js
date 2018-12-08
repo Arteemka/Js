@@ -55,6 +55,9 @@ function form() {
       function clearInput() {
         for (var i = 0; i < input.length; i++) {
           input[i].value = '';
+           setTimeout(() => {
+            statusMessage.innerHTML = '';
+          },2000);
         }
       }
 
