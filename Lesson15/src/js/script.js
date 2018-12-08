@@ -411,6 +411,12 @@ function form() {
           },2000);
         }
       }
+      function clearInValid() {
+        for (var i = 0; i < inValid.length; i++) {
+          inValid[i].value = '';
+                 
+        }
+      }
 
       postData(formData).then(function () {
         return statusMessage.innerHTML = message.loading;
@@ -418,7 +424,8 @@ function form() {
         return statusMessage.innerHTML = message.success;
       }).catch(function () {
         return statusMessage.innerHTML = message.failure;
-      }).then(clearInput);
+      }).then(clearInput)
+      .then(clearInValid);
     });
   };
 
