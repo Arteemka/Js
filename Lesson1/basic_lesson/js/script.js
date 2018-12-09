@@ -25,6 +25,7 @@ function main() {
         console.log(appData.expenses);
         alert(appData.money/30);
 
+        
 }
 
 main();
