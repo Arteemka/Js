@@ -1,0 +1,155 @@
+.progress-top,
+.progress-right,
+.progress-bottom,
+.progress-left {
+  position: fixed;
+  z-index: 999;
+
+  background-color: red;
+}
+
+.progress-top,
+.progress-bottom {
+  height: 0.35rem;
+}
+
+.progress-right,
+.progress-left {
+  width: 0.35rem;
+}
+
+.progress-top,
+.progress-right {
+  top: 0;
+}
+
+.progress-top,
+.progress-left {
+  left: 0;
+}
+
+.progress-bottom,
+.progress-left {
+  bottom: 0;
+}
+
+.progress-bottom,
+.progress-right {
+  right: 0;
+}
+
+body {
+    height: 4000px;
+}
+
+  .wrapper {
+    
+    top: 60%;
+    right: 20% ;
+    transform: translate(-50%, -50%);
+  }
+  
+  .search-box {
+    width: 0px;
+    height: 100px;
+    
+  }
+  
+  .input {
+    position: absolute;
+    top: 70px;
+    right: 600px;
+    box-sizing: border-box;
+    width: 0px;
+    height: 63px;
+    padding: 0 20px;
+    outline: none;
+    font-size: 18px;
+    border-radius: 50px;
+    color: #29313a;
+    border: 3px solid #62d474;
+    transition: all 0.8s ease;
+  }
+  
+  ::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: #62d474;
+  }
+  ::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #62d474;
+  }
+  :-ms-input-placeholder {
+    /* IE 10+ */
+    color: #62d474;
+  }
+  :-moz-placeholder {
+    /* Firefox 18- */
+    color: #62d474;
+  }
+  
+  .btn {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: #62d474;
+    border-radius: 50%;
+    right: 590px;
+    top: 60px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 80px;
+    font-size: 20px;
+    color: #fff;
+    transition: all 0.8s ease;
+  }
+  
+  .input.active {
+    width: 350px;
+    right: 100px;
+  }
+  
+  .btn.animate {
+    transform: rotate(-360deg);
+    right: 100px;
+  }
+  
+  
+  .folded {
+    position: relative;
+   top:190px;
+    left: 30%;
+    transform: translate(-50%,-50%);
+    width: 640px;
+    height: 360px;
+    display: flex;
+  }
+  .folded-itm {
+    list-style: none;
+    width: 30%;
+    background: url(http://images.vfl.ru/ii/1507205711/b5893f70/18869424.jpg);
+    background-size: cover;
+    height: 100%;
+    transition: 0.5s;
+  }
+  .folded:hover .folded-itm:nth-child(odd) {
+    transform: skewY(15deg);
+    box-shadow: inset 20px 0 50px rgba(0,0,0, .5);
+  }
+  .folded:hover .folded-itm:nth-child(even) {
+    transform: skewY(-15deg);
+    box-shadow: inset 20px 0 50px rgba(0,0,0, .5);
+  }
+  
+  .folded .folded-itm:nth-child(1) {
+    background-position: 0;
+  }
+  .folded .folded-itm:nth-child(2) {
+    background-position: -160px;
+  }
+  .folded .folded-itm:nth-child(3) {
+    background-position: -320px;
+  }
+  .folded .folded-itm:nth-child(4) {
+    background-position: -480px;
+  }
