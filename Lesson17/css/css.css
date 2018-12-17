@@ -2,60 +2,60 @@
 .progress-right,
 .progress-bottom,
 .progress-left {
-  position: fixed;
-  z-index: 999;
+    position: fixed;
+    z-index: 999;
 
-  background-color: red;
+    background-color: red;
 }
 
 .progress-top,
 .progress-bottom {
-  height: 0.35rem;
+    height: 0.35rem;
 }
 
 .progress-right,
 .progress-left {
-  width: 0.35rem;
+    width: 0.35rem;
 }
 
 .progress-top,
 .progress-right {
-  top: 0;
+    top: 0;
 }
 
 .progress-top,
 .progress-left {
-  left: 0;
+    left: 0;
 }
 
 .progress-bottom,
 .progress-left {
-  bottom: 0;
+    bottom: 0;
 }
 
 .progress-bottom,
 .progress-right {
-  right: 0;
+    right: 0;
 }
 
 body {
     height: 4000px;
 }
 
-  .wrapper {
-    
+.wrapper {
+
     top: 60%;
-    right: 20% ;
+    right: 20%;
     transform: translate(-50%, -50%);
-  }
-  
-  .search-box {
+}
+
+.search-box {
     width: 0px;
     height: 100px;
-    
-  }
-  
-  .input {
+
+}
+
+.input {
     position: absolute;
     top: 70px;
     right: 600px;
@@ -69,26 +69,29 @@ body {
     color: #29313a;
     border: 3px solid #62d474;
     transition: all 0.8s ease;
-  }
-  
-  ::-webkit-input-placeholder {
+}
+
+::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
     color: #62d474;
-  }
-  ::-moz-placeholder {
+}
+
+::-moz-placeholder {
     /* Firefox 19+ */
     color: #62d474;
-  }
-  :-ms-input-placeholder {
+}
+
+:-ms-input-placeholder {
     /* IE 10+ */
     color: #62d474;
-  }
-  :-moz-placeholder {
+}
+
+:-moz-placeholder {
     /* Firefox 18- */
     color: #62d474;
-  }
-  
-  .btn {
+}
+
+.btn {
     position: absolute;
     width: 80px;
     height: 80px;
@@ -102,54 +105,60 @@ body {
     font-size: 20px;
     color: #fff;
     transition: all 0.8s ease;
-  }
-  
-  .input.active {
+}
+
+.input.active {
     width: 350px;
     right: 100px;
-  }
-  
-  .btn.animate {
+}
+
+.btn.animate {
     transform: rotate(-360deg);
     right: 100px;
-  }
-  
-  
-  .folded {
+}
+
+
+.folded {
     position: relative;
-   top:190px;
+    top: 190px;
     left: 30%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: 640px;
     height: 360px;
     display: flex;
-  }
-  .folded-itm {
+}
+
+.folded-itm {
     list-style: none;
     width: 30%;
     background: url(http://images.vfl.ru/ii/1507205711/b5893f70/18869424.jpg);
     background-size: cover;
     height: 100%;
     transition: 0.5s;
-  }
-  .folded:hover .folded-itm:nth-child(odd) {
+}
+
+.folded:hover .folded-itm:nth-child(odd) {
     transform: skewY(15deg);
-    box-shadow: inset 20px 0 50px rgba(0,0,0, .5);
-  }
-  .folded:hover .folded-itm:nth-child(even) {
+    box-shadow: inset 20px 0 50px rgba(0, 0, 0, .5);
+}
+
+.folded:hover .folded-itm:nth-child(even) {
     transform: skewY(-15deg);
-    box-shadow: inset 20px 0 50px rgba(0,0,0, .5);
-  }
-  
-  .folded .folded-itm:nth-child(1) {
+    box-shadow: inset 20px 0 50px rgba(0, 0, 0, .5);
+}
+
+.folded .folded-itm:nth-child(1) {
     background-position: 0;
-  }
-  .folded .folded-itm:nth-child(2) {
+}
+
+.folded .folded-itm:nth-child(2) {
     background-position: -160px;
-  }
-  .folded .folded-itm:nth-child(3) {
+}
+
+.folded .folded-itm:nth-child(3) {
     background-position: -320px;
-  }
-  .folded .folded-itm:nth-child(4) {
+}
+
+.folded .folded-itm:nth-child(4) {
     background-position: -480px;
-  }
+}
