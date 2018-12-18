@@ -1,43 +1,51 @@
 window.addEventListener('DOMContentLoaded', () => {
     //slider
-    let slides = document.querySelectorAll('.main-slider-item'),
-        prev = document.querySelector('.top'),
-        next = document.querySelector('.bottom'),
-        slideIndex = 1;
-
-    function showSlides(n) {
-        if (n > slides.length) {
+    function mainSlider() {
+        var sliderWrapper = document.querySelector('.main-slider'),
+            slides = sliderWrapper.querySelectorAll('.main-slider-item'),
+            slideIndex = 1,
+            preventSlide = 1,
+            height = slides[0].clientHeight;
+      
+        function showSlides(n) {
+          if (n > slides.length) {
             slideIndex = 1;
-        }
-        if (n < 1) {
+          }
+      
+          if (n < 1) {
             slideIndex = slides.length;
+          }
+      
+          var top = 0;
+          slides[slideIndex - 1].style.top = '-100%';
+          var sliderAnimation = setInterval(function () {
+            top = top + 5;
+      
+            if (preventSlide == slides.length) {
+              slides[slides.length - 1].style.top = top + 'px';
+            } else {
+              slides[slideIndex - 2].style.top = top + 'px';
+            }
+      
+            slides[slideIndex - 1].style.top = -height + top + 'px';
+      
+            if (top >= height) {
+              preventSlide = slideIndex;
+              clearInterval(sliderAnimation);
+            }
+          }, 5);
         }
-        slides.forEach((item) => item.style.display = 'none');
-        slides[slideIndex - 1].style.display = 'block';
+      
+        function plusSlides() {
+          showSlides(slideIndex += 1);
+        }
+      
+        var mainSliderTimer = setInterval(function () {
+          plusSlides();
+        }, 3000);
+      }
 
-    }
-
-    function plusSlides(n) {
-        showSlides(slideIndex += n);
-    }
-
-    prev.addEventListener('click', function () {
-        plusSlides(-1);
-    });
-    next.addEventListener('click', function () {
-        plusSlides(1);
-    });
-
-    let timerVert = setInterval(() => {
-
-        next.click();
-
-    }, 5000);
-
-   
-    showSlides(timerVert);
-
-
+mainSlider();
     //button
     let buttonDesign = document.querySelectorAll('.button-design'),
         popupDesign = document.querySelector('.popup-design'),
@@ -109,98 +117,61 @@ window.addEventListener('DOMContentLoaded', () => {
 
         }
     });
+    let size = document.querySelector('#size'),
+    material = document.querySelector('#material'),
+    options = document.querySelector('#options'),
+    promocode = document.querySelector('.promocode'),
+    priceInput = document.querySelector('.calc-price');
+let sizeChange= {
+  1: 500,
+  2: 1000,
+  3: 1500,
+  4: 2000
+},
+    materialChange = {
+  1: 500,
+  2: 1000,
+  3: 1500
+},
+    optionsChange = {
+  1: 500,
+  2: 1000,
+  3: 2000
+};
 
-    //calc
-    let size = document.getElementById('size'),
-        material = document.getElementById('material'),
-        option = document.getElementById("options"),
-        calcPrice = document.getElementsByClassName('calc-price')[0],
-        totalSum = 0,
-        baseSize = +size.value,
-        baseMaterial = +material.value,
-        baseOption = option.options[option.selectedIndex].value,
-        input1 = document.getElementsByTagName('input');
-    console.log(input1);
-    let valid = true;
+function change() {
+  if (size.options.selectedIndex > 0 && material.options.selectedIndex > 0) {
+    let price = sizeChange[size.options.selectedIndex] + materialChange[material.options.selectedIndex];
 
-    calcPrice.textContent = 'Для расчета нужно выбрать размер картины и материал картины';
+    if (options.options.selectedIndex > 0) {
+      price = price + optionsChange[options.options.selectedIndex];
+    }
 
-    size.addEventListener('change', function () {
-        baseSize = +this.value;
-        totalSum = (baseSize + baseMaterial) * 4000;
-        let str = 'IWANTPOPART';
-        console.log(baseSize);
-        console.log(baseMaterial);
-        console.log(baseOption);
-        if (!isNaN(baseSize.value) || !isNaN(baseMaterial)) {
-            for (let i = 0; i < input1.length; i++) {
-                if (input1[i].className == 'promocode' && valid == true) {
+    if (promocode.value == 'IWANTPOPART') {
+      price = price * 0.7;
+    }
 
-                    input1[i].addEventListener('input', function () {
-                        if (input1[i].value == str) {
-                            calcPrice.innerHTML = (totalSum - (totalSum * 30 / 100)) * baseOption;
-                        }
-                    });
-                }
-            }
-            calcPrice.innerHTML = totalSum * baseOption;
-        } else {
-            calcPrice.textContent = 'Для расчета нужно выбрать размер картины и материал картины';
-        }
-    });
+    priceInput.textContent = price;
+  } else {
+    priceInput.textContent = 'Для расчета нужно выбрать размер картины и материал картины';
+  }
+}
 
-    material.addEventListener('change', function () {
-        baseMaterial = +this.value;
-        totalSum = (baseMaterial + baseSize) * 4000;
-        let str = 'IWANTPOPART';
-        console.log(baseSize);
-        console.log(baseMaterial);
-        console.log(baseOption);
-        if (isNaN(baseSize)) {
-            calcPrice.textContent = 'Для расчета нужно выбрать размер картины и материал картины';
-        } else if (!isNaN(baseSize.value) || !isNaN(baseMaterial)) {
-            for (let i = 0; i < input1.length; i++) {
-                if (input1[i].className == 'promocode' && valid == true) {
+size.addEventListener('change', function () {
+  change();
+});
+material.addEventListener('change', function () {
+  change();
+});
+options.addEventListener('change', function () {
+  change();
+});
+promocode.addEventListener('input', function () {
+  change();
+});
 
-                    input1[i].addEventListener('input', function () {
-                        if (input1[i].value == str) {
-                            calcPrice.innerHTML = (totalSum - (totalSum * 30 / 100)) * baseOption;
-
-                        }
-
-
-                    });
-
-
-                }
-            }
-            calcPrice.innerHTML = totalSum * baseOption;
-        } else {
-            calcPrice.textContent = 'Для расчета нужно выбрать размер картины и материал картины';
-        }
-    });
-
-    option.addEventListener('change', function () {
-        let str = 'IWANTPOPART';
-        if (!isNaN(baseSize.value) || !isNaN(baseMaterial)) {
-            for (let i = 0; i < input1.length; i++) {
-                if (input1[i].className == 'promocode' && valid == true) {
-
-                    input1[i].addEventListener('input', function () {
-                        if (input1[i].value == str) {
-                            baseOption = option.options[option.selectedIndex].value;
-                            calcPrice.innerHTML = (totalSum - (totalSum * 30 / 100)) * baseOption;
-                        }
-                    });
-                }
-
-            }
-            baseOption = option.options[option.selectedIndex].value;
-            calcPrice.innerHTML = totalSum * baseOption;
-        } else {
-            calcPrice.textContent = 'Для расчета нужно выбрать размер картины и материал картины';
-        }
-    });
+      calc();
+   
 
     //picture
     let sizeOne = document.getElementsByClassName('size-1')[0],
@@ -235,39 +206,39 @@ window.addEventListener('DOMContentLoaded', () => {
         this.src = './img/sizes-4.png';
     };
 //slider 
-    let slider = document.querySelectorAll('.feedback-slider-item'),
-        prevBtn = document.querySelector('.main-prev-btn'),
-        nextBtn = document.querySelector('.main-next-btn'),
-        slideIndexH = 1;
+    // let slider = document.querySelectorAll('.feedback-slider-item'),
+    //     prevBtn = document.querySelector('.main-prev-btn'),
+    //     nextBtn = document.querySelector('.main-next-btn'),
+    //     slideIndexH = 1;
 
 
-    function showSlider(n) {
-        if (n > slider.length) {
-            slideIndexH = 1;
-        }
-        if (n < 1) {
-            slideIndexH = slider.length;
-        }
-        slider.forEach((item) => item.style.display = 'none');
-        slider[slideIndexH - 1].style.display = 'block';
+    // function showSlider(n) {
+    //     if (n > slider.length) {
+    //         slideIndexH = 1;
+    //     }
+    //     if (n < 1) {
+    //         slideIndexH = slider.length;
+    //     }
+    //     slider.forEach((item) => item.style.display = 'none');
+    //     slider[slideIndexH - 1].style.display = 'block';
 
-    }
+    // }
 
-    function plusSlider(n) {
-        showSlider(slideIndexH += n);
-    }
+    // function plusSlider(n) {
+    //     showSlider(slideIndexH += n);
+    // }
 
-    prevBtn.addEventListener('click', function () {
-        plusSlider(-1);
-    });
-    nextBtn.addEventListener('click', function () {
-        plusSlider(1);
-    });
-    let timerHoriz = setInterval(() => {
-        nextBtn.click();
-    }, 5000);
+    // prevBtn.addEventListener('click', function () {
+    //     plusSlider(-1);
+    // });
+    // nextBtn.addEventListener('click', function () {
+    //     plusSlider(1);
+    // });
+    // let timerHoriz = setInterval(() => {
+    //     nextBtn.click();
+    // }, 5000);
 
-    showSlider(timerHoriz);
+    // showSlider(timerHoriz);
 
     //accordion
     let accordionHeading = document.querySelectorAll('.accordion-heading');
